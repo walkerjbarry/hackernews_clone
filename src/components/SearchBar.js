@@ -1,44 +1,65 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+//import Search from './Search';
 import '../index.css';
 
-import axios from 'axios';
 
-const searchArticles = async (term) => {
-    const response = await axios.get('GET https://newsapi.org/v2/everything?q=&apiKey=API_KEY', {
-        headers: {
-            Authorization: 'dba3c85b9be04e8c911d6ddd7430dd04'
-        },
-        params: {
-            query: term,
-        }
+const SearchBar = () => {
+
+    const [searchInput, setSearchInput] = useState();
+
+    const [articles, setArticles] = useState([]);
+
+    const handleChange = (event) => {
+        event.preventDefault();
+        setSearchInput(event.target.value);
+
+    };
+
+
+    useEffect(()=>{
+        
+        fetch(`https://newsapi.org/v2/everything?q&from=2023-08-18&sortBy=popularity`, {
+                method: "GET",
+                headers: {
+                    "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
+                    q: { searchInput } ,
+                },
+            })
+                .then((res) => res.json())
+                .then(data => {
+                    setArticles(data.articles);
+                    console.log(data.articles);
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        
+        
     });
-
-    return response.data.results;
-};
-
-function SearchBar({ onSubmit }) {
-    const [term, setTerm] = useState('');
-   
-
-        const handleFormSubmit = (event) => {
-            event.preventDefault();
-
-            onSubmit(term);
-        };
-
-        const handleChange = (event) => {
-            setTerm(event.target.value);
-        };
     
 
     return (
         <div>
-            <form onSubmit={handleFormSubmit}>
-                
-                <input className="ms-5 shadow-inner bg-blend-color-burn"placeholder="Search"value={term} onChange={handleChange} />
+            <div className="rounded-lg mx-5 my-3">
+                <form >
+                    <input value={ searchInput} className="ms-5 shadow-md" placeholder="Search Articles" onChange={handleChange} />
+                </form>
+            </div>
+        
+            {articles.map((article) => (
 
-            </form>
-        </div>);
+                <div className="article mb-5" key={article.url}>
+                    <h2 className="font-bold" >{article.title}</h2>
+                    <img className="h-100 w-100" src={article.urlToImage} alt="article" />
+                    <p>{article.description}</p>
+                    <a href={article.url}><strong>Read More</strong></a>
+
+
+                </div>)
+            )};
+        </div>
+    );
 };
+  
 
 export default SearchBar;

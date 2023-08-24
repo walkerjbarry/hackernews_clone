@@ -6,7 +6,7 @@ const PopularFeed = () => {
 
 
     
-    const [articles, setArticles] = useState();
+    const [articles, setArticles] = useState([]);
 
     //const API_KEY = "dba3c85b9be04e8c911d6ddd7430dd04";
 
@@ -31,10 +31,19 @@ const PopularFeed = () => {
    
 
     return (
-        <div>
-            <div>Popular This Week</div>
+        <div className="m-3">
+            {articles.map((article) => (
+
+                <div className="article" key={article.url}>
+                    <h2 className="font-bold" >{article.title}</h2>
+                    <img className="h-100 w-100" src={article.urlToImage} alt="article" />
+                    <p>{article.description}</p>
+                    <a href={article.url}>Read More</a>
+                </div>)
+            )};
         </div>
-            );
+
+    );
 };
 
 export default PopularFeed;
