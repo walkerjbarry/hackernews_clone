@@ -47,7 +47,7 @@ const SearchBar = () => {
                     <h2 className="font-bold" >{article.title}</h2>
                     <img className="h-100 w-100" src={article.urlToImage} alt="article" />
                     <p>{article.description}</p>
-                    <a href={article.url}><strong>Read More</strong></a>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer"><strong>Read More</strong></a>
 
 
                 </div>)

@@ -35,7 +35,7 @@ const PopularFeed = () => {
                     <h2 className="font-bold" >{article.title}</h2>
                     <img className="h-100 w-100" src={article.urlToImage} alt="article" />
                     <p>{article.description}</p>
-                    <a href={article.url}>Read More</a>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">Read More</a>
                 </div>)
             )};
         </div>
