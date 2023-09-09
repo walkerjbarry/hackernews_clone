@@ -16,7 +16,7 @@ const SearchBar = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`https://newsapi.org/v2/everything?q=${searchInput}&from=2023-08-18&sortBy=popularity&apiKey=dba3c85b9be04e8c911d6ddd7430dd04`, {
+        fetch(`https://newsapi.org/v2/everything?q=${searchInput}&from=2023-08-18&sortBy=popularity`, {
             method: "GET",
             headers: {
                 "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
@@ -31,28 +31,6 @@ const SearchBar = () => {
                 console.log(err.message);
             });
     }
-
-
-        //useEffect(() => {
-
-        //    fetch(`https://newsapi.org/v2/everything?q&from=2023-08-18&sortBy=popularity`, {
-        //        method: "GET",
-        //        headers: {
-        //            "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
-        //            q: { searchInput },
-        //        },
-        //    })
-        //        .then((res) => res.json())
-        //        .then(data => {
-        //            setArticles(data.articles);
-        //            console.log(data.articles);
-        //        })
-        //        .catch((err) => {
-        //            console.log(err.message);
-        //        });
-
-
-        //});
     
 
     return (
@@ -73,9 +51,9 @@ const SearchBar = () => {
 
 
                 </div>)
-            )};
+            )}
         </div>
-    );
+    )
 };
 
 

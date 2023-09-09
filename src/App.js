@@ -4,7 +4,7 @@ import MainFeed from './components/MainFeed.js';
 import PopularFeed from './components/PopularFeed';
 import SearchBar from './components/SearchBar';
 import { FaSearch } from 'react-icons/fa';
-//import img from './images/newspaper.jpg';
+
 
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
 
             </div>
         </div>
-    );
+    )
 };
 
 export default App;

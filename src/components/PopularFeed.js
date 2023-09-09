@@ -8,11 +8,11 @@ const PopularFeed = () => {
     //const API_KEY = "dba3c85b9be04e8c911d6ddd7430dd04";
 
     useEffect(() => {
-        fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=dba3c85b9be04e8c911d6ddd7430dd04', {
+        fetch('https://newsapi.org/v2/top-headlines?country=us', {
             method: "GET",
-            //headers: {
-            //    /*"X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04"*/,
-            //},
+            headers: {
+                "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
+            },
         })
             .then((res) => res.json())
             .then(data => {

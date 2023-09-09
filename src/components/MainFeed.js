@@ -6,11 +6,11 @@ const MainFeed = () => {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        fetch('https://newsapi.org/v2/everything?q=tech&from=2023-08-18&sortBy=popularity&apiKey=dba3c85b9be04e8c911d6ddd7430dd04', {
+        fetch('https://newsapi.org/v2/everything?q=tech&from=2023-08-18&sortBy=popularity', {
             method: "GET",
-            //headers: {
-            //    "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
-            //},
+            headers: {
+                "X-Api-Key": "dba3c85b9be04e8c911d6ddd7430dd04",
+            },
         })
             .then((res) => res.json())
             .then(data => {
