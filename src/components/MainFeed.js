@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import SearchBar from './SearchBar';
 
 const MainFeed = () => {
 
@@ -22,10 +22,10 @@ const MainFeed = () => {
             });
     }, []);
 
-    // const renderedArticles = articles.map())
-
     return (
         <div>
+            <SearchBar />
+
             {articles.map((article) => (
 
                 <div className="article mb-5" key={article.url}>
@@ -33,7 +33,6 @@ const MainFeed = () => {
                     <img className="h-100 w-100" src={article.urlToImage} alt="article" />
                     <p>{article.description}</p>
                     <a href={article.url} target="_blank" rel="noopener noreferrer"><strong>Read More</strong></a>
-
 
                 </div>)
             )};

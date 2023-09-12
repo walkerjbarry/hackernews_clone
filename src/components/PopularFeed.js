@@ -5,8 +5,6 @@ const PopularFeed = () => {
 
     const [articles, setArticles] = useState([]);
 
-    //const API_KEY = "dba3c85b9be04e8c911d6ddd7430dd04";
-
     useEffect(() => {
         fetch('https://newsapi.org/v2/top-headlines?country=us', {
             method: "GET",
@@ -23,9 +21,6 @@ const PopularFeed = () => {
                 console.log(err.message);
             });
     }, []);
-
-
-
 
     return (
         <div className="m-3">
