@@ -1,0 +1,7 @@
+name: node-hnc-http
+services:
+  nodedev:
+    type: node:16
+    command: npm install & npm start
+    port: 3000
+    ssl: false
